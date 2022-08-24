@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Box, Typography, Button} from "@mui/material";
 
+import FileComponent from "./File";
+
 export default function DisplayComp(){
     return(
         <Box sx={{
@@ -16,11 +18,19 @@ export default function DisplayComp(){
                 <Button>Back</Button>
             </Box>
             <Box sx={{
+                padding: '1em',
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                gap: '.5em',
                 width: "100%",
                 height: '50vh',
                 border: '1px solid gray'
             }}>
-
+                <FileComponent/>
+                <FileComponent/>
+                <FileComponent/>
+                <FileComponent/>
             </Box>
         </Box>
 
