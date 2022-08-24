@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from "@mui/material/TextField";
 import Modal from '@mui/material/Modal';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const style = {
     position: 'absolute',
@@ -23,11 +24,12 @@ const style = {
 
 interface ModalWindowStructure {
     open: boolean;
-    handleOpen: () => void;
-    handleClose: () => void
+    handleOpen: (e:any) => void;
+    handleClose: () => void;
+    modalType: string
 }
 
-export default function ModalWindow({open, handleOpen, handleClose}: ModalWindowStructure) {
+export default function ModalWindow({open, handleOpen, handleClose, modalType}: ModalWindowStructure) {
 
     return (
         <Box>
@@ -38,8 +40,8 @@ export default function ModalWindow({open, handleOpen, handleClose}: ModalWindow
                 justifyContent: 'flex-start',
                 gap: '5em'
             }}>
-                <Button variant="outlined" onClick={handleOpen}>Create new File</Button>
-                <Button variant="outlined" onClick={handleOpen}>Create new Folder</Button>
+                <Button variant="outlined" onClick={handleOpen} name={'file'}>Create new File</Button>
+                <Button variant="outlined" onClick={handleOpen} name={'folder'}>Create new Folder</Button>
             </Box>
             <Modal
                 open={open}
@@ -57,12 +59,21 @@ export default function ModalWindow({open, handleOpen, handleClose}: ModalWindow
                     <Typography id="modal-modal-title" variant="h4" component="h2" sx={{
                         borderBottom: '1px solid gray'
                     }}>
-                        New Folder
+                        { modalType === 'folder' ? 'New Folder': 'New File' }
                     </Typography>
                     <TextField placeholder={'name...'} sx={{
                         width: '100%'
                     }}/>
                     </Box>
+
+                    {modalType === 'file' && <TextareaAutosize
+                        maxRows={4}
+                        aria-label="maximum height"
+                        placeholder="File content"
+                        defaultValue=""
+                        style={{width: '100%', height: 100}}
+                    />}
+
                     <Box sx={{
                         width: '100%',
                     }}>
