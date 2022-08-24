@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import {Stack} from "@mui/material";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from "@mui/material/TextField";
@@ -24,25 +25,32 @@ const style = {
 
 interface ModalWindowStructure {
     open: boolean;
-    handleOpen: (e:any) => void;
+    handleOpen: (e: any) => void;
     handleClose: () => void;
     modalType: string
 }
 
-export default function ModalWindow({open, handleOpen, handleClose, modalType}: ModalWindowStructure) {
+export default function ModalWindow({
+                                        open,
+                                        handleOpen,
+                                        handleClose,
+                                        modalType
+                                    }: ModalWindowStructure) {
 
     return (
-        <Box>
-            <Box sx={{
-                display: 'flex',
+        <Stack width={'70%'}>
+            <Stack sx={{
                 flexDirection: 'row',
                 width: '100%',
-                justifyContent: 'flex-start',
-                gap: '5em'
+                gap: '5em',
             }}>
-                <Button variant="outlined" onClick={handleOpen} name={'file'}>Create new File</Button>
-                <Button variant="outlined" onClick={handleOpen} name={'folder'}>Create new Folder</Button>
-            </Box>
+                <Button variant="outlined"
+                        onClick={handleOpen}
+                        name={'file'}>Create new File</Button>
+                <Button variant="outlined"
+                        onClick={handleOpen}
+                        name={'folder'}>Create new Folder</Button>
+            </Stack>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -56,14 +64,18 @@ export default function ModalWindow({open, handleOpen, handleClose, modalType}: 
                         flexDirection: 'column',
                         gap: '1em'
                     }}>
-                    <Typography id="modal-modal-title" variant="h4" component="h2" sx={{
-                        borderBottom: '1px solid gray'
-                    }}>
-                        { modalType === 'folder' ? 'New Folder': 'New File' }
-                    </Typography>
-                    <TextField placeholder={'name...'} sx={{
-                        width: '100%'
-                    }}/>
+                        <Typography id="modal-modal-title"
+                                    variant="h4"
+                                    component="h2"
+                                    sx={{
+                                        borderBottom: '1px solid gray'
+                                    }}>
+                            {modalType === 'folder' ? 'New Folder' : 'New File'}
+                        </Typography>
+                        <TextField placeholder={'name...'}
+                                   sx={{
+                                       width: '100%'
+                                   }}/>
                     </Box>
 
                     {modalType === 'file' && <TextareaAutosize
@@ -77,11 +89,11 @@ export default function ModalWindow({open, handleOpen, handleClose, modalType}: 
                     <Box sx={{
                         width: '100%',
                     }}>
-                        <Button variant="outlined" >Cancel</Button>
-                        <Button variant="outlined" >Create</Button>
+                        <Button variant="outlined">Cancel</Button>
+                        <Button variant="outlined">Create</Button>
                     </Box>
                 </Box>
             </Modal>
-        </Box>
+        </Stack>
     );
 }

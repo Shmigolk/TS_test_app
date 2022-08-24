@@ -7,22 +7,6 @@ import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 export default function FileComponent() {
     return (
         <>
-        <Box sx={{
-            width: "100px",
-            height: '100px',
-            border: '1px solid black',
-            borderRadius: '10%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-
-    }}>
-            <InsertDriveFileIcon sx={{ fontSize: 80 }}/>
-            <Typography>Blablah</Typography>
-
-        {/*<FolderOpenOutlinedIcon sx={{ fontSize: 80 }}/>*/}
-    </Box>
             <Box sx={{
                 width: "100px",
                 height: '100px',
@@ -34,7 +18,23 @@ export default function FileComponent() {
                 alignItems: 'center',
 
             }}>
-                <FolderOpenOutlinedIcon sx={{ fontSize: 80 }}/>
+                <InsertDriveFileIcon sx={{fontSize: 80}}/>
+                <Typography>Blablah</Typography>
+
+                {/*<FolderOpenOutlinedIcon sx={{ fontSize: 80 }}/>*/}
+            </Box>
+            <Box sx={{
+                width: "100px",
+                height: '100px',
+                border: '1px solid black',
+                borderRadius: '10%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+
+            }}>
+                <FolderOpenOutlinedIcon sx={{fontSize: 80}}/>
                 <Typography>Blablah</Typography>
 
 
